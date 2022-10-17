@@ -17,7 +17,9 @@ RUN apk update && \
     rm -rf /var/cache/apk/* && \
     rm -f Xray-linux-64.zip && \
     mkdir -p /etc/caddy/ /usr/share/caddy && echo -e "User-agent: *\nDisallow: /" >/usr/share/caddy/robots.txt && \
-    wget $CADDYIndexPage -O /usr/share/caddy/index.html && unzip -qo /usr/share/caddy/index.html -d /usr/share/caddy/ && mv /usr/share/caddy/*/* /usr/share/caddy/ 
+    wget $CADDYIndexPage -O /usr/share/caddy/index.html && unzip -qo /usr/share/caddy/index.html -d /usr/share/caddy/ && mv /usr/share/caddy/*/* /usr/share/caddy/ && \
+    cat /tmp/Caddyfile >/etc/caddy/Caddyfile && \
+    cat /tmp/xray.json >/xray.json
 
 RUN chmod +x /start.sh
 
